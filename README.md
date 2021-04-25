@@ -26,12 +26,17 @@ Script to enable systemd support on current Ubuntu WSL2 images from the Windows 
 
 Get and run the script: 
 ```sh
-git clone https://github.com/DamionGans/ubuntu-wsl2-systemd-script.git
+git clone https://github.com/andraspatka/ubuntu-wsl2-systemd-script.git
 cd ubuntu-wsl2-systemd-script/
-bash ubuntu-wsl2-systemd-script.sh
+sudo bash ubuntu-wsl2-systemd-script.sh --force
 # Enter your password and wait until the script has finished
 ```
-Restart the Ubuntu shell and try running systemctl:
+Restart the Ubuntu shell: close the terminal, then run:
+```sh
+wsl -t Ubuntu-20.04
+```
+
+and try running systemctl:
 ```sh
 systemctl
 ```
