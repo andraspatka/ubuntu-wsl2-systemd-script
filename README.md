@@ -48,3 +48,11 @@ If you don't get an error and see a list of units, the script worked.
 # Installing k3s
 
 Instructions can be found here: https://k3s.io/
+
+# Tips
+
+Getting into a broken linux distro:
+
+```sh
+wsl bash --norc
+```
