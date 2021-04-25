@@ -1,3 +1,5 @@
+NOT WORKING YET: Causes infinite loop in Ubuntu 20.04. Issue: https://github.com/DamionGans/ubuntu-wsl2-systemd-script/issues/29
+
 # Getting k3s to work with WSL2
 
 Source: https://worklifenotes.com/2020/09/01/running-k3s-on-windows-with-wsl2/
@@ -18,6 +20,7 @@ Steps:
    ```
 3. Install Ubuntu 20.04 from the Microsoft Store. **Warning: Install exactly this version. The method might not work for other versions.**
 4. For k3s you need systemd. To make it work in WSL, follwo the steps in the following heading.
+5. After systemd is working in your linux distro, install k3s (following heading)
 
 
 # Getting systemd to work in WSL (Ubuntu 20.04)
@@ -42,3 +45,6 @@ systemctl
 ```
 If you don't get an error and see a list of units, the script worked.
 
+# Installing k3s
+
+Instructions can be found here: https://k3s.io/
