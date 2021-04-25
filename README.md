@@ -1,28 +1,39 @@
-# ubuntu-wsl2-systemd-script
-Script to enable systemd support on current Ubuntu WSL2 images from the Windows store. 
-Script is unsupported and will no longer be maintained, but will be up here because it is used by quite some people.
-I am not responsible for broken installations, fights with your roommates and police ringing your door ;-).
+# Getting k3s to work with WSL2
 
-Instructions from [the snapcraft forum](https://forum.snapcraft.io/t/running-snaps-on-wsl2-insiders-only-for-now/13033) turned into a script. Thanks to [Daniel](https://forum.snapcraft.io/u/daniel) on the Snapcraft forum! 
+Source: https://worklifenotes.com/2020/09/01/running-k3s-on-windows-with-wsl2/
 
-## Usage
-You need ```git``` to be installed for the commands below to work. Use
-```sh
-sudo apt install git
-```
-to do so.
-### Run the script and commands
+Steps:
+1. Install WSL2: https://docs.microsoft.com/en-us/windows/wsl/install-win10
+2. Recommended: Setting CPU and memory limits to WSL2:
+   1. Create the following file: c:\users\<profile name>\.wslconfig
+   2. Content of the file (set CPU and memory limit as desired):
+    ```
+    [wsl2]
+    memory=4GB # Limits VM memory in WSL 2 to 4 GB
+    processors=2 # Makes the WSL 2 VM use two virtual processors
+    ```
+   3. Restart WSL2 (LxssManager Service). Run it in Powershell with Admin rights:
+   ```
+   Restart-Service LxssManager
+   ```
+3. Install Ubuntu 20.04 from the Microsoft Store. **Warning: Install exactly this version. The method might not work for other versions.**
+4. For k3s you need systemd. To make it work in WSL, follwo the steps in the following heading.
+
+
+# Getting systemd to work in WSL (Ubuntu 20.04)
+Script to enable systemd support on current Ubuntu WSL2 images from the Windows store.
+
+
+Get and run the script: 
 ```sh
 git clone https://github.com/DamionGans/ubuntu-wsl2-systemd-script.git
 cd ubuntu-wsl2-systemd-script/
 bash ubuntu-wsl2-systemd-script.sh
 # Enter your password and wait until the script has finished
 ```
-### Then restart the Ubuntu shell and try running systemctl
+Restart the Ubuntu shell and try running systemctl:
 ```sh
 systemctl
-
 ```
 If you don't get an error and see a list of units, the script worked.
 
-Have fun using systemd on your Ubuntu WSL2 image. You may use and change and distribute this script in whatever way you'd like. 
